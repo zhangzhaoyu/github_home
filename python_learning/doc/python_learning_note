@@ -1,0 +1,366 @@
+1. python 是解释性语言。
+
+2. 输入输出
+  * 输出 print
+  * 输入 raw_input
+   
+3. 以# 开头的是注释，可以是任何内容。以[:] 结尾时， 缩进的语句视为代码快。
+
+4. 数据类型和变量
+   整数         任意大小的整数，十六进制用0x 前缀0-9，a-f 表示
+   浮点数       123e9
+   字符串       单引号 双引号
+   布尔值       True False 布尔值可以用 and or not 运算
+   空值         None 
+   变量         必须是大小写英文、数字和_ 组成，且不能用数字开头
+   常量         不能改变的变量
+
+5. Python 的字符串
+   ord()        字符转化为数字
+   char()       数字转化为字符
+   
+6. Python 对Unicode 的支持。以u'...' 表示，比如print u'中文'。
+
+7. len() 返回字符串长度。
+
+8. 占位符
+   %d           整数
+   %f           浮点数
+   %s           字符串
+   %x           十六进制整数
+   
+9. list 是一个有序的集合。
+   list.append() 追加元素到末尾
+   list.insert(1, 'Jack')
+   list.pop()     删除list 末尾的元素
+   
+   list 里面的数据类型可以不同。
+  
+10. tuple 元组，另一种有序表。一旦初始化就不能修改。
+    定义只有一个元素的tuple t = (1,)
+    
+    t = (1) 则是数学运算中的小括号，结果为1。
+
+11.  循环 name = [1, 2, 3]
+     for name in names:
+         print name
+
+     sum = 0
+     n = 99
+     while n > 0
+           sum = sum + n
+           n = n - 2
+    print sum
+
+12. dict 全程dictionary，在其他语言中称为map。
+    dict = {'name' : 'zhangzhaoyu', 'num' : 2}
+    set 是一组key 的集合，但不存储value。要创建一个set，需要提供一个list 作为输入集合。
+    s = set([1, 2, 3])
+    s.add(4)
+    s.remove(1)
+             
+    
+ 13. 在交互式命令help(abs)， 查看函数的功能。
+
+14. 定义函数
+    def my_abs() :
+        if x >- 0 :
+           return x
+        else :
+             return -x
+     
+15. 空函数
+    def nop() :
+        pass
+   
+16. 函数可以同时返回多个值，其实就是返回tuple，而多个变量可以同时接收一个tuple，按位置赋值给对应的值。
+    
+17. 默认参数，默认参数一定要用不可变参数。
+    def power(x, n=2) :
+        s = 1
+        while n > 0 :
+              n = n-1
+              s = s * x 
+        return s
+                
+    调用：
+        power(5) power(5, 3)
+
+18. *args 是可变参数，接收一个tuple。
+    **kw 是关键字参数，接收的是一个dict。
+
+19. 递归函数
+    def fact(n) :
+        if n ==1 :
+           return 1
+        return n * fact(n -1)
+    调用： fact(5)
+
+20. 递归的改进，尾递归
+    def fact(n) :
+        return fact_iter(1, 1, n)
+
+    def fact_iter(product, count, max) :
+        if count > max:
+           return product
+        return fact_iter(product * count, count+1, max)
+    调用：fact(n)                
+
+21. 切片（slice） 取一个list 或tuple 的部分元素是很常见的操作。
+    L = [1, 2, 3, 4, 5]
+    LL = L[0:3]
+    
+    也可以反过来取，记住倒数第一个元素的下标为 -1 ：
+    LL = [-3:-1]
+
+    LL = [:10:2]        前十个每两个取一个
+    LL = [::5]          所有数，每五个取一个
+
+
+22. 字符串的截取
+   'abcdefghijk'[:3]    截取前三个
+
+23. 列表生成器 range(start, end, [, step])
+    [x * x for x in range(1, 10, 2)]
+    [x * x for x in range(1, 11) if x % 2 == 0 ]     
+
+24. 生成器，一边循环一边计算的机制，称为生成器Generator。
+   只需要把一个列表生成式的[] 改变为()，就创建了一个Generator。
+   g = (x * x for x in range(1, 11))
+     
+25. 自定义生成器
+   def fib(max) :
+       n, a, b = 0, 0, 1
+       while n < max :
+             yield b
+             a, b = b, a + b
+             n = n + 1
+
+   如果定义一个函数中包含yield 关键字， 那么这个函数就不再是一个普通的函数，而是一个Generator。
+   遇到return 语句或者执行到函数体最后一行语句，就是结束Generator 的指令。
+
+26. 函数式编程
+   函数式编程就是一种抽象程序很高的编程范式，允许把函数本身作为参数传入到另一个函数，还允许返回一个函数。
+
+27. 高阶函数
+   能够接收函数作为参数的函数。称之为高阶函数。
+
+28. 排序算法
+   sorted([1, 32, 12, 78])
+                   
+29. 把函数作为参数传入，或者把函数作为返回值返回，这样的函数称为高阶函数。函数式编程就是这种高度抽象的编程范式。
+
+30. python 对匿名函数的支持有限，只有一些简单的情况下可以使用匿名函数。
+   map(lambda x : x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+31. 装饰器
+   由于函数也是一个对象，而且函数对象可以赋值给变量。所以通过变量也可以调用该函数。
+   函数对象有一个__name__ 属性，可以拿到函数的名字
+   在函数代码运行期间动态增加功能的方式，称之为'Decorator'。
+
+32. 偏函数 functools.partial
+    int2 = functools.partial(int, base=2)
+
+33. 模块
+    每一个包目录下都会有一个__init__.py 的文件，否则python 会把这个目录当成普通目录，而不是一个包。
+    当我们在运行模块时，python 解释器会把一个特殊变量__name__ 设置为__main__ ，而如果在其他地方导入该模块
+    将不会这样。
+
+34. 导入模块的时候还可以使用别名。
+
+35. 类似_xxx 和__xxx 这样的函数或变量就是非公开的。不应该被直接引用。外部不需要引用的函数定义为private，
+   只有外部需要引用的函数才定义为public。                     
+
+36. 模块搜索路径
+   默认情况下，python 解释器会搜索当前目录，所有已安装的内置模块和第三方模块，搜索路径放在sys 模块的path 变量。
+   添加自己的搜索目录，直接修改sys.path
+   sys.path.append('path/xx/xxx')
+   设置环境变量 PYTHONPATH，该环境变量会自动添加到搜索路径中。
+
+37. __future__ 在python 2.7 的代码中直接使用python 3.x 的语法
+    from __future__ import division
+
+38. OOP 把对象作为程序的基本单元，一个对象包含了数据和操作数据的函数。
+
+39. 所有的类都继承自object 类。__init__ 方法，实现构造函数。该方法第一个参数永远是self，表示创建的实例本身。
+   类中定义的方法的第一个参数永远是self。指向创建的实例本身。
+
+40. 和静态语言不同，python 允许对实力变量绑定任何数据，也就是说，对于两个实例变量，虽然他们都是同一个类的不同实例，
+   但拥有的变量名称可能不同。
+   bart = Student('zhang', 89)
+   lisa = Student('zhaoyu',78)
+   
+   bart.age = 12
+
+41. 在python 中，实例的变量名如果以__ 开头，就编程一个私有的变量（private），只有内部可以访问，外部不可以访问。
+   python 解释器对外把__name 变量改成了_Student__name，所以仍然可以使用student.__Student__name 来访问__name 变量。
+         
+42. 判断一个变量是否是某个类型，可以用isinstance() 判断。
+
+43. 获取对象信息
+   python 把每种type 类型都定义好了常量，放在types 模块里。
+   import types
+   type('abc') == types.StringType
+   types.UnicodeType
+   types.ListType
+   types.TypeType
+   
+   isinstance(dog, Dog)
+   isinstance('a', (str, unicode))
+         
+   如果要获得一个对象的所有属性和方法，可以使用dir() 函数，它返回一个包含字符串的list，
+   比如，获得一个str 对象的所有属性和方法。
+    
+44. 使用__slots_ 限制class 的属性。
+    class Student(object) :
+          __slots__ = ('name', 'age')
+
+    __slots__ 定义的属性仅对当前类起作用，对继承的自雷是不起作用的。除非在子类中也定义__slots__,
+    这样子类允许定义的属性就是自身的__slots__ 加上父类的__slots__ 。
+
+45. python 允许使用多重继承。
+
+46. 定制类
+    __len__() 方法可以让class 作用与len() 函数
+    __str__() 方法可以让class 返回一个好看的字符串
+    __repr__() 直接输实例输出的内容
+    __iter__() 让一个类作用于for...in 循环
+    __getitem__ 让一个对象可以像list，用下表取出值
+    __getattr__ 动态返回一个属性
+    __call__ 直接在实例本身上调用
+    calable() 函数，可以判断一个对象是否是'可调用'对象
+
+47. 动态语言和静态语言最大的不同，就是函数和类的定义，不是编译时定义的，而是运行时动态创建的。
+
+48. 可以通过type() 函数动态地创建类。
+    Hello  = type('hello', (object,) dict(hello=fn))
+    要在静态语言运行期创建类，必须构造源代码字符串在调用编译器，或者借助一些工具生成字节码实现，本质上是动态编译，很复杂。
+
+49. 错误、测试和调试
+    try except finally
+    logging 模块可以非常容易地记录错误信息。
+    自定义错误
+    class FooError(StandardError) :
+          pass
+
+    抛出异常
+    raise FooError('invalid value: %s')
+    raise 语句如果不带参数，就是把当前错误原样抛出。
+
+    断言 assert 
+    def foo(s) :
+        n = int(s)
+        assert n != 0, 'n is zero!'    
+        return 10 / n
+
+    程序在启动的时候，可以通过传入-0 关闭断言。
+
+50. logging
+    logging.basicConfig(level=logging.INFO)
+
+51. pdb 启动之后可以让程序单步执行，可以随时查看运行状态。
+    python -m pdb err.py
+    输入l 查看代码
+    输入n 单步执行代码
+    输入p 变量名 查看变量
+    输入q 结束调试
+    
+    import pdb
+    pdb.set_trace() 就可以在可能出错的地方房一个断点。    
+
+52. IO编程
+    文件读写 python 提供codecs 模块帮助我们在读取文件时自动转换编码，直接读出unicode。
+    with open('hello.txt', 'w') as f :
+         f.write('hello')
+
+53. 操作文件和目录
+    操作文件和目录的函数一部分放在os 模块中，一部分放在os.path 中。
+
+    os.path.split() 拆分目录
+    os.path.splitext() 获取扩展名
+    
+54. 序列化 python 提供cPickle 和pickle。
+
+55. Json python 内置的json 模块。
+    print(json.dumps(s, default = lambda obj : obj.__dict__))
+
+56. 进程和线程
+    线程是最小的执行单元，而进程由至少一个线程组成。
+    在Unix/Linux 下，可以使用fork() 调用实现多进程。
+    要实现跨平台的多进程，可以使用multiprocessing 模块。
+    进程间通信是通过Queue Pipes 等实现。
+
+57. 多线程
+    python 的线程是真正的Posix Thread, 而不是模拟出来的线程。
+    thread 是低级模块，threading 高级模块
+    
+58. 线程lock
+    lock = threading.lock()
+    def run_thread(n) :
+        for i in range(1000) :
+            lock.acquire()
+            try :
+                change_it()
+            finally :
+                lock.release()
+
+                
+
+59. ThreadLocal 为每一个线程存储一份数据。互不干扰。
+    
+60. 计算机密集型和IO密集型
+    C 语言适合计算密集型，速度快
+    python 等脚本语言适合，代码量最小，IO密集型
+
+61. 分布式进程
+    在Thread 和Process 中，应当优选Process，因为Process 更稳定。且可以分布到多台机器上。而Thread 最多只能分布到同意太机器的多个CPU上。
+
+62. 正则表达式
+    
+63. 常用内建模块
+    collections
+    namedtuple  Point = namedtuple('Point', ['x', 'y'])
+    depue 实现高效的插入和删除操作的双向雷彪，适合用于队列和栈。q = deque(['a', 'b', 'c'])
+    defaultdict dict 如果引用的key 不存在，就会抛出KeyError, 如果希望key 不存在时，返回一个默认值，就用defaultdict
+    dd = defaultdict(lamba : 'N/A')
+    OrderedDict() 可以保持key 的顺序
+    Counter() 简单的计数器，统计字符出现的个数
+
+    base64 是一种任意二进制到文本字符串的编码方法，常用于URL Cookie 网页中传输少量二进制数据。
+
+    struct 的pack 函数把任意数据类型变成字符串
+
+    hashlib 摘要算法，又称哈希算法，散列算法。通过一个函数，把任意长度的数据转换为一个长度固定的数据串。
+    摘要函数是一个单向函数。
+    md5 是常见的摘要算法，速度很快。生成的结果是固定的128bit 字节，通常用一个32 位的16 进制字符串表示。
+    摘要算法 存储用户登陆的用户名和口令
+    摘要算法不是加密算法，不能用于加密，因为不能通过摘要反推明文。
+
+    itertools 提供了用于操作迭代对象的函数。它们返回值不是list，而是迭代对象，只有用for 循环迭代的时候才真正计算。
+
+    XML DOM vs SAX
+    DOM 会把整个XML 读入内存，解析为树，因此占用内存大，解析慢，有点是可以任意遍历树的节点。
+    SAX 是流模式，边读边解析，占用内存小，解析快，缺点是需要自己处理事件。
+
+    HTMLParser 解析HTML 的工具类。
+
+64. 常用的第三方模块
+    第三方模块都会在PyPI the Python Package Index 上注册。只要找到对应的模块的名字，即可以用easy_install 或者pip 安装
+
+65. Python Imaging Library(PIL) 已经是Python 平台事实上的图像处理标准库了。
+
+66. 图形界面
+    Tk wxWidgets Qt GTK
+    
+    Python 自带的库支持Tk 的Tkinter，无需安装任何包，就可以直接使用。
+
+67. 网络编程
+    TCP 编程
+    
+        
+68. Python 有一个全局解释器锁的东西，这是一种防止解释器同时执行多条Python 字节码指令的机制(Global Interpreter Lock, GIL)。这是一种防止解释器同事执行多条Python 字节码指令的机制。
+
+69. NumPy 是科学计算的基础包。
+    pandas 提供了是我们能够快速地处理结构化数据的大量数据结构和函数。
+    matplotlib  是最流行的用于绘制数据图表的Python 库。
+    SciPy 是一组专门解决科学计算中各种标准问题域的包的集合。
