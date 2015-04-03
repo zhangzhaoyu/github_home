@@ -3,7 +3,7 @@
 2. 输入输出
   * 输出 print
   * 输入 raw_input
-   
+
 3. 以# 开头的是注释，可以是任何内容。以[:] 结尾时， 缩进的语句视为代码快。
 
 4. 数据类型和变量
@@ -11,14 +11,14 @@
    浮点数       123e9
    字符串       单引号 双引号
    布尔值       True False 布尔值可以用 and or not 运算
-   空值         None 
+   空值         None
    变量         必须是大小写英文、数字和_ 组成，且不能用数字开头
    常量         不能改变的变量
 
 5. Python 的字符串
    ord()        字符转化为数字
    char()       数字转化为字符
-   
+
 6. Python 对Unicode 的支持。以u'...' 表示，比如print u'中文'。
 
 7. len() 返回字符串长度。
@@ -28,17 +28,17 @@
    %f           浮点数
    %s           字符串
    %x           十六进制整数
-   
+
 9. list 是一个有序的集合。
    list.append() 追加元素到末尾
    list.insert(1, 'Jack')
    list.pop()     删除list 末尾的元素
-   
+
    list 里面的数据类型可以不同。
-  
+
 10. tuple 元组，另一种有序表。一旦初始化就不能修改。
     定义只有一个元素的tuple t = (1,)
-    
+
     t = (1) 则是数学运算中的小括号，结果为1。
 
 11.  循环 name = [1, 2, 3]
@@ -58,9 +58,7 @@
     s = set([1, 2, 3])
     s.add(4)
     s.remove(1)
-             
-    
- 13. 在交互式命令help(abs)， 查看函数的功能。
+13. 在交互式命令help(abs)， 查看函数的功能。
 
 14. 定义函数
     def my_abs() :
@@ -68,21 +66,21 @@
            return x
         else :
              return -x
-     
+
 15. 空函数
     def nop() :
         pass
-   
+
 16. 函数可以同时返回多个值，其实就是返回tuple，而多个变量可以同时接收一个tuple，按位置赋值给对应的值。
-    
+
 17. 默认参数，默认参数一定要用不可变参数。
     def power(x, n=2) :
         s = 1
         while n > 0 :
               n = n-1
-              s = s * x 
+              s = s * x
         return s
-                
+
     调用：
         power(5) power(5, 3)
 
@@ -104,12 +102,12 @@
         if count > max:
            return product
         return fact_iter(product * count, count+1, max)
-    调用：fact(n)                
+    调用：fact(n)
 
 21. 切片（slice） 取一个list 或tuple 的部分元素是很常见的操作。
     L = [1, 2, 3, 4, 5]
     LL = L[0:3]
-    
+
     也可以反过来取，记住倒数第一个元素的下标为 -1 ：
     LL = [-3:-1]
 
@@ -122,12 +120,12 @@
 
 23. 列表生成器 range(start, end, [, step])
     [x * x for x in range(1, 10, 2)]
-    [x * x for x in range(1, 11) if x % 2 == 0 ]     
+    [x * x for x in range(1, 11) if x % 2 == 0 ]
 
 24. 生成器，一边循环一边计算的机制，称为生成器Generator。
    只需要把一个列表生成式的[] 改变为()，就创建了一个Generator。
    g = (x * x for x in range(1, 11))
-     
+
 25. 自定义生成器
    def fib(max) :
        n, a, b = 0, 0, 1
@@ -147,7 +145,7 @@
 
 28. 排序算法
    sorted([1, 32, 12, 78])
-                   
+
 29. 把函数作为参数传入，或者把函数作为返回值返回，这样的函数称为高阶函数。函数式编程就是这种高度抽象的编程范式。
 
 30. python 对匿名函数的支持有限，只有一些简单的情况下可以使用匿名函数。
@@ -169,7 +167,7 @@
 34. 导入模块的时候还可以使用别名。
 
 35. 类似_xxx 和__xxx 这样的函数或变量就是非公开的。不应该被直接引用。外部不需要引用的函数定义为private，
-   只有外部需要引用的函数才定义为public。                     
+   只有外部需要引用的函数才定义为public。
 
 36. 模块搜索路径
    默认情况下，python 解释器会搜索当前目录，所有已安装的内置模块和第三方模块，搜索路径放在sys 模块的path 变量。
@@ -189,12 +187,12 @@
    但拥有的变量名称可能不同。
    bart = Student('zhang', 89)
    lisa = Student('zhaoyu',78)
-   
+
    bart.age = 12
 
 41. 在python 中，实例的变量名如果以__ 开头，就编程一个私有的变量（private），只有内部可以访问，外部不可以访问。
    python 解释器对外把__name 变量改成了_Student__name，所以仍然可以使用student.__Student__name 来访问__name 变量。
-         
+
 42. 判断一个变量是否是某个类型，可以用isinstance() 判断。
 
 43. 获取对象信息
@@ -204,13 +202,13 @@
    types.UnicodeType
    types.ListType
    types.TypeType
-   
+
    isinstance(dog, Dog)
    isinstance('a', (str, unicode))
-         
+
    如果要获得一个对象的所有属性和方法，可以使用dir() 函数，它返回一个包含字符串的list，
    比如，获得一个str 对象的所有属性和方法。
-    
+
 44. 使用__slots_ 限制class 的属性。
     class Student(object) :
           __slots__ = ('name', 'age')
@@ -247,10 +245,10 @@
     raise FooError('invalid value: %s')
     raise 语句如果不带参数，就是把当前错误原样抛出。
 
-    断言 assert 
+    断言 assert
     def foo(s) :
         n = int(s)
-        assert n != 0, 'n is zero!'    
+        assert n != 0, 'n is zero!'
         return 10 / n
 
     程序在启动的时候，可以通过传入-0 关闭断言。
@@ -264,9 +262,9 @@
     输入n 单步执行代码
     输入p 变量名 查看变量
     输入q 结束调试
-    
+
     import pdb
-    pdb.set_trace() 就可以在可能出错的地方房一个断点。    
+    pdb.set_trace() 就可以在可能出错的地方房一个断点。
 
 52. IO编程
     文件读写 python 提供codecs 模块帮助我们在读取文件时自动转换编码，直接读出unicode。
@@ -278,7 +276,7 @@
 
     os.path.split() 拆分目录
     os.path.splitext() 获取扩展名
-    
+
 54. 序列化 python 提供cPickle 和pickle。
 
 55. Json python 内置的json 模块。
@@ -293,7 +291,7 @@
 57. 多线程
     python 的线程是真正的Posix Thread, 而不是模拟出来的线程。
     thread 是低级模块，threading 高级模块
-    
+
 58. 线程lock
     lock = threading.lock()
     def run_thread(n) :
@@ -304,10 +302,10 @@
             finally :
                 lock.release()
 
-                
+
 
 59. ThreadLocal 为每一个线程存储一份数据。互不干扰。
-    
+
 60. 计算机密集型和IO密集型
     C 语言适合计算密集型，速度快
     python 等脚本语言适合，代码量最小，IO密集型
@@ -316,7 +314,7 @@
     在Thread 和Process 中，应当优选Process，因为Process 更稳定。且可以分布到多台机器上。而Thread 最多只能分布到同意太机器的多个CPU上。
 
 62. 正则表达式
-    
+
 63. 常用内建模块
     collections
     namedtuple  Point = namedtuple('Point', ['x', 'y'])
@@ -351,13 +349,12 @@
 
 66. 图形界面
     Tk wxWidgets Qt GTK
-    
+
     Python 自带的库支持Tk 的Tkinter，无需安装任何包，就可以直接使用。
 
 67. 网络编程
     TCP 编程
-    
-        
+
 68. Python 有一个全局解释器锁的东西，这是一种防止解释器同时执行多条Python 字节码指令的机制(Global Interpreter Lock, GIL)。这是一种防止解释器同事执行多条Python 字节码指令的机制。
 
 69. NumPy 是科学计算的基础包。
