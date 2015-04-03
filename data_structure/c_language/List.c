@@ -10,6 +10,7 @@
 typedef int Status;
 typedef int ElemType;
 
+
 typedef struct {
   ElemType data[MAXSIZE];
   int length;

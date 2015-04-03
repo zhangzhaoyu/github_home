@@ -4,5 +4,7 @@ def test() :
 
 a = [1,2]
 
+b = {}
+
 if __name__ == "__main__":
     test()

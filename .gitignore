@@ -1,0 +1,14 @@
+rect-manager/.classpath
+rect-manager/.project
+rect-manager/.settings
+rect-manager/target
+rect-manager/.springBeans
+device-manager/target
+device-bus/target
+target
+dbg
+*.o
+*.a
+.idea
+*.class
+*.iml
