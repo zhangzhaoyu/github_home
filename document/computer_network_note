@@ -1,0 +1,61 @@
+1. 广域网使用的设备
+   * 传统电话拨接：透过ppp（Point-to-Point Protocol） 协议
+   * 整合服务数据网络(Integrated Services Digital Network, ISDN)
+   * 非对称数位用路回路（Asymmetric Digital Subscriber Line, ADSL）:透过pppoe协定
+   * 电缆调制解调器(Cable modem)
+
+2. 局域网络使用的设备-以太网
+   
+3. 传输速度增加，网络线的要求就更加严格，因为速度增加时，线材的电磁效应相互干扰会增强。
+
+4. 跳线：一边是568A 一边是568B 的接头时称为跳线，用在直接链接两部主机的网络卡
+   并行线：两边相同，用在链接主机网络卡与集线器之间的线材
+
+5. 以太网的传输协议：CSMA/CD(Carrier Sense Multiple Access with Collision Detection)
+
+6. switch 为非共享媒体。
+
+7. 在同一网段内，通过CSMA/CD 广播的方式传播数据。
+
+8. IP 分级
+   * 0xxxxxxx.xxxxxxxx.xxxxxxxx class A         0.xx.xx.xx~127.xx.xx.xx
+   * 10xxxxxx.xxxxxxxx.xxxxxxxx class B         128.xx.xx.xx~191.xx.xx.xx
+   * 110xxxxx.xxxxxxxx.xxxxxxxx class C         192.xx.xx.xx~223.xx.xx.xx
+   * 1110xxxx.xxxxxxxx.xxxxxxxx class D         224.xx.xx.xx~239.xx.xx.xx
+   * 11110xxx.xxxxxxxx.xxxxxxxx class E         240.xx.xx.xx~255.xx.xx.xx
+
+9. 私有IP 也分别在A B C 三个class 当中各保留一段作为私有IP网段，那就是：
+   class A : 10.0.0.0~10.255.255.255
+   class B : 172.16.0.0~172.31.255.255
+   class C : 192.168.0.0~192.168.255.255
+
+   私有IP 的路由信息不能对外散播（只能存在内部网络）
+   
+10. 当所有的计算机都设定在同一个网域内，计算机都可以直接透过MAC来进行数据交流，而不闭经过Router来进行封包传递。
+
+11. NAT(Network Address Transfer)。
+
+12. IP 的获取方式
+	** 直接手动设定
+    ** 通过拨号取得
+    ** 自动取得（DHCP）
+
+13. 无层级IP：CIDR(Classless Intredomain Routing)
+
+14. ISO 七层协定
+    * 应用层
+    * 表现层
+    * 会话层
+    * 传送层
+    * 网络层
+    * 连接层
+    * 物理层
+
+    TCP/IP
+    * 应用层
+    * 传送层
+    * 网络层
+    * 链接层
+
+15. 路由概念
+	

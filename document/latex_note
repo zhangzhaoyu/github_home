@@ -1,0 +1,51 @@
+latex note
+1. texlive 更新
+   tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet
+
+2. 测试安装是否成功
+   tex --version
+
+   处理一个基本的LaTex 文件
+   latex sample2e.tex
+
+   即时预览结果
+   xdiv sample2e.dvi
+
+   创见用于打印或显示的PostScript 文件
+   dvips sample2e.dvi -o sample22.ps
+
+   创见PDF 文件而非DVI
+   pdflatex sample2e.tex
+
+   预览PDF 文件 文件
+   gv sample2e.pdf 或
+   xpdf sample2e.pdf
+
+3. 除了sample2e.tex 外的其他标准测试文件
+   small2e.tex 比sample2e 更为简单的文档
+   testpage.tex 测试打印机是否有预设的偏移量
+   nfssfont.tex 打印一份字体表格以供测试
+   testfont.tex 用plain Tex 打印字体表格
+   story.tex 最为经典的(plain) Tex 测试文件
+
+4. 查看系统字体
+   fc-list
+
+   查看系统中文字体
+   fc-list :lang=zh-cn | sort
+
+5. tlmgr 管理安装
+   开启图形模式
+   tlmgr -gui
+
+   更新系统
+   tlmgr update -all
+
+   产生较少的输出
+   tlmgr update -all -dry-run tlmgr update -list
+
+   描述一个包（或者集合、安装方案）
+   tlmgr show collection-latexextra
+
+6. Web2C 用户指南
+

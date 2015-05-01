@@ -1,0 +1,233 @@
+1. 关机指令shutdown poweroff reboot。
+
+2. 切换运行等级 init
+   run level 0  关机
+   run level 3  纯文本模式
+   run level 5  含有图形接口模式
+   run level 6  重新启动
+
+3. Linux 的文件权限与目录配置
+   Linux 里面任何一个文件都具有[User Group Others] 三种身份的各别权限。
+   d     目录                        
+   -     文件
+   l     连接
+   b     可供存储的接口设备
+   c     串行端口设备
+   
+4. 改变文件的属性与权限
+   chgrp        改变文件所属群组 chgrp testgroup text.txt
+   chown        改变文件拥有者   chown zhaoyu text.txt
+   chmod        改变文件的权限，SUID SGID SBIT 等       
+   
+   chown root:root text.txt
+
+   chmod u+rwx 给用户增加读写执行权限、
+   chmod g+rwx 给用户组增加读写执行的权限
+   chmod o+rwx 给其他用户增加读写执行的权限
+
+   rwx 主要是针对文件的内容来的。
+
+   目录的x 权限代表的是用户能否进入该目录称为工作目录。
+
+5. 能不能删除一个文件要看该用户对文件所属的目录的权限（X）。
+
+6. Linux 文件能不能执行，与其所谓的扩展名没有关系，只与他的第一栏的是个属性有关。
+
+7. Linux 目录的配置依据。
+   /usr         软件放置处（unix software resource）
+   /etc         配置文件
+   /opt         第三方协助软件
+   /boot        开机与核心档案
+   /var/mail    邮件信箱
+   /var/run     程序相关
+   /var/spool/news      新闻组
+   /var/lock            程序相关
+
+8. 根目录(\)的意义内容
+   根据FHS 标准建议：根目录所在分隔槽应该越小越好，且应用程序所安装的软件最好不要与根目录放在同一个分隔槽内。
+
+9. /etc/inid.d 所有服务的预设启动script 都放在这里。
+   /etc/xinetd.d super daemon 管理的各项服务的配置文件目录。
+   /srv 网络服务启动后，所需要取用的数据目录。
+   /proc 虚拟文件系统，放置的数据都是在内存当中。
+   /sys 记录与核心相关的信息。
+
+10. /var 常态性变动的文件，包括缓存，登陆档以及某些软件运作产生的文件。
+    
+11. . 代表当前目录，也可以使用./ 表示。
+    .. 代表上一层目录，也可以../ 来表示。
+
+12. uname -r 查看核心版本
+    lsb_release -a 查看distribution 版本
+
+13. 要开放目录给任何人浏览时，至少也要给予r 和x权限，但w 权限不可以随便给。
+
+14. 五个不可以与根目录放在不同的partition，分别为/etc /lib /bin /dev /sbin。
+
+15. /sbin 系统管理员才能使用的指令。
+    /bin 一般的用户习惯性使用指令。
+
+16. 将一个文件的权限改为-rwxr-xr--
+    chmod 754 filename  chmod u=rwx, g=rx, o=r filename
+
+17. 绝对路径（/）， 相对路径 相对当前路径
+
+18. 目录的相关操作
+    .   代表此层目录
+    ..  代表上一层目录
+    -   代表前一个工作目录
+    ～  代表[目前使用者]所在的家目录
+    ~account    代表 account 这个使用这的家目录
+
+19. mkdir [-p]递归创建目录
+    rmdir [-p]仅能删除空的目录
+
+20. $PATH 运行档路径的变量
+    
+
+21. cp -a 将文件的所有属性复制过去。
+    cp -r 复制目录
+    cp -s 复制连接档（快捷方式）
+    cp -l 复制连接档（硬连接）
+    cp -u 目标与源文件有差异时才会复制
+    cp -d 复制连接档的属性（默认复制原始文件）
+
+22. mv 移动文件或者变更档名。
+    -f          如果目标文件已经存在，不会询问直接覆盖
+    -i          如果目标文件已经存在，询问是否覆盖
+    -u          若目标文件已经存在，且source 比较新，才会升级
+
+23. 取得路径的文件名称与目录名称
+    basename    /etc/sysconfig/network
+    dirname     /etc/sysconfig/network
+
+24. 文件内容查找
+    cat         由第一行开始显示文件内容
+    tac         从最后一行开始显示 是cat 的倒写
+    nl          显示的时候顺道输出行号
+    more        一页一页的显示文件内容
+    less        与more 类似，但是比more 更好的是，可以往前翻页
+    head        只看头几页
+    tail        只开尾几页 
+    od          已二进制的方式读取文件内容
+
+25. more
+    * space bar         向下翻一页
+    * Enter             向下翻一行
+    * /string           搜索
+    * :f                立刻显示出档名及目前显示的行数
+    * q                 离开more
+    * b 或Ctrl -b       往回翻页
+
+26. less
+    * space bar         向下翻动一页
+    * page down         向下翻动一页
+    * page up           向上翻动一页
+    * /string           搜索
+    * ?string           搜索
+    * n                 重复前一个搜索
+    * N                 反向的重复前一个搜索
+    * q                 离开
+
+27. 文件记录的时间参数
+    modifucation time(mtime)    
+    status time(ctime)
+    access time(atime)
+
+28. 修改文件的时间
+    touch
+
+29. 文件目录的默认权限与隐藏权限
+    umask       指定目前使用者在创建文件或目录时候的权限默认值
+    umask 分数指的是默认值需要减掉的权限
+    
+    文件隐藏属性
+    chattr [+-=][ASacdistu] 文件或目录名称
+    lsattr [-adR] 文件或目录
+
+30. SUID/SCID/SBIT 
+    除了数字的配置方法之外，还可以透过符号法来配置：    
+    SUID 为u+s SGID 为g+s SBIT 为o+t
+
+31. 观测文件的类型，如果想查看某个文件的基本数据。
+    file ~/.bashc
+
+32. 命令与文件的搜索
+    查看命令完整档名    which [-a] type
+    
+33. 文件档名的搜索
+    whereis [-bmsu] 文件或目录名
+    -b      只找binary 格式的文件
+    -m      只找说明档manual 路径下的文件
+    -s      只找source 来源文件
+    -u      找不再上述三个项目中的其他特殊文件
+
+    locate [-ir] keyword
+    -i     忽略大小写的差异
+    -r     后面可接正则表达式
+    
+    find [PATH] [option] [action] 
+    find / -name passwd
+
+34. find /etc -name '*httpd*'
+
+35.rmdir 仅能删除空目录，要删除非空目录需要使用[rm -r]。
+
+36. 使用者能够使用的变量是根据PATH 变量所规定的目录取搜寻的。
+
+37. touch 的目的在修改文件的时间参数，但亦可用来创建空文件。
+
+38. 文件具有SUID 特殊权限时，代表当使用者运行此--binary 程序时，在运行的过程中使用者会暂时具有程序拥有者的权限。
+
+39. 目录具有SGID 特殊权限时，代表使用者在这个目录底下新建的文件之群组都会与该目录群组名称相同。
+
+40. 目录具有SBIT 特殊权限时，代表在该目录下使用者创建的文件只有自己与root 能够删除。
+
+41. 观察文件的类型可以使用file 命令。
+
+42. umask 可以拿掉一些权限，因此，适当的定义umask 有助于系统的安全，因为他可以用来创建默认的目录或文件的权限。
+
+43.主要分割和扩展分配最多可以有四个。
+   扩展分配最多只能有一个（操作系统的限制）      
+   逻辑分割是有扩展分配持续切割出来的分隔槽。
+
+44.一个可被挂载的数据为一个文件系统而不是一个分隔槽。
+   文件系统通常会将这两部份的数据分别存放在不同的区块，权限与属性放置到inode 中，至于实际数据则放置到data block 中。
+
+45.每个block 仅能容纳一个文件的数据而已，因此如果你的文件都非常小，但是你的block 在格式化时却选用最大的4k 时，可能会
+   产生一些容量的浪费。
+
+46.test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

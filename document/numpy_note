@@ -1,0 +1,73 @@
+python Tutorial 中文翻译http://reverland.org/python/2012/08/22/numpy/
+
+1. ndarray.ndim
+   显示数组的秩，也就是数组的维度
+
+2. ndarray.shape
+   显示数组的大小，row 和column
+
+3. ndarray.size
+   数组总动的元素个数
+
+4. ndarray.dtype
+   数组元素类型，包括python 标准类型和numpy 的特定类型
+
+5. ndarray.itemsize
+   元素的大小，所占字节数
+
+6. ndarray.data
+   数组元素的详细信息
+   >>> b.data
+   <read-write buffer for 0x1d79840, size 24, offset 0 at 0x7f24f4403f30>
+
+7. arange(n) 
+   生成 [0 ... n-1] 数组
+
+8. arange(n).reshape(3, 5)
+   array([[ 0,  1,  2,  3,  4],
+       [ 5,  6,  7,  8,  9],
+       [10, 11, 12, 13, 14]])
+
+9. 创见数组
+   a = array([2, 3, 4])
+   
+   指定数组类型，在创见的时候
+   a = array([[1, 2], dtype = float64])
+   
+10. zeros((2, 3)) 
+    创建float64 全部为0.0 数组
+
+11. ones((2, 3, 4), dtype = int16)
+    全部为1 的数组
+
+12. empty((2, 3))
+
+13. arange(10) 生成10 个数，步长1
+    arange(10, 30) 生成10 到30 之间的数，步长为1
+    arange(10, 30，5) 步长为5
+    
+14. linspace(0, 2, 9)
+    指定生成的数据的个数
+
+15. dot(a, b) 数组的矩阵乘
+
+16. b= random.random([2, 3])
+    生成随机的数组
+
+17. += 和 *= 被用来更改已存在数组，而不是创见一个新数组
+    
+18. 迭代多维数组
+    for row in b :
+        print row
+
+    访问数组中的每个元素
+    for element in b.flat :
+        print element
+
+19. 浅复制
+    c = a.view()
+    深复制
+    c = a.copy()
+
+20. 矩阵类
+    

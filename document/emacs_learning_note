@@ -1,0 +1,138 @@
+1. 官方教程文档
+   M -x help-with-tutorial (Ctrl -h t)
+   M -x describe-variable (Ctrl -h v)
+   M -x	describe-function (Ctrl -h f)
+   M -x describe-key	  (Ctrl -h k)
+
+2. Ctrl -v 查看下一个屏幕
+   M -v 返回上一个屏幕
+
+3. 上下左右移动
+   C -p		移动到上一行
+   C -n		移动到下一行
+   C -b		回退一个字
+   C -f		前进一个字
+
+4. C -l		光标在屏幕中央、上、下移动
+
+5. M -b		一个单词一个单词的后移
+   M -f		一个单词一个单词前移
+
+6. C -a		移到一行的开头（只能移动一行的开头）
+   C -e		移到一行的结尾（只能一行的结尾）
+   M -a		移动多行
+   M -e		移动多行
+
+7. C - ->	一个单词一个单词前移
+   C - ->	一个单词一个单词后移
+
+8. C -u num C -b (C -f) 可以将指令重复num 次。
+
+9. C -g 停止一个响应很长时间的指令
+
+10. 当运行一个不存在的指令时，你希望它运行输入 space bar，
+    不希望运行时输入 n。
+
+11. 当打开多个窗口时，希望关闭其他窗口
+    C -x num(C -x 1)
+
+12. 删除
+    C -d	删除光标的下一个字符
+    M -<DEL>	删除光标前一个单词
+    M -d	删除光标后一个单词
+    C -k	删除从光标开始到行结尾
+    M -k	删除当前语句到结尾
+
+    复制粘贴
+    C + Shift + @ 做标记
+    C + w     剪切标记到光表之间的内容
+    C + y     显示前切板的内容
+
+13. 恢复删除的内容（yanking）
+    C -y	回复删除的内容
+    M -y	重复按会出现删除的多数内容
+
+14. 撤销（Undo）
+    C -/
+    C -x u 
+
+15. C -x C -f	查找文件
+    C -x C -s	存储文件
+    C -x s 	存储所有的缓冲
+    C -x C -c 	退出emacs
+
+16. C -x C-b	列表显示Buffers
+
+17. 暂时离开emacs C -z
+    fg 返回emacs
+
+18. 总结
+    C -o                在光标下一行插入空行
+    C -x k              关掉缓冲区
+    C -x C -f		find file
+    C -x C -s		save file
+    C -x C -w       save as
+    C -x s 		save some buffers
+    C -x C -b		list buffers
+    C -x b 		switch	buffers
+    C -x C -c 		quit emacs
+    C -x 1 		delete all but one window
+    C -x h              select all
+    C -x u		undo
+    C /	 		undo
+    M -x revover file<Return>
+    C + enb      跳到文章最后一行
+    C + home     跳到文章第一行
+    M + C + <[>] 跳到文章的开始或结尾
+    M -q         重整理当前段落
+    C -t         交换字符
+    M -t         交换单词
+    M -l         把光标处的单词变成小写
+    M -u         把光标处的单词变成大写
+    M -c         把光标处的单词第一个字符变成大写，并把后面的变成小写
+    
+19. major mode
+    m -x fundanebtal-mode
+    m -x text-mode (human language text)
+    c -h m 查看当major mode 的说明
+
+20. 搜索
+    C -s	从光标出往后搜索（当确认搜索结果后，继续C -s 跳到下一个满足的条件）
+    C -r 	从光标出往前搜索
+    C -s C -s   将上一次的搜索值作为本次搜索内容
+    C -r C -r   同上
+    C M -r      正则表达式搜索
+    C M \       将一个区域缩进    
+    
+21. 多窗口
+    C -x num	num 为2 上下分屏，num 为3 时左右分屏
+    C-M-v	可以滚动底下（另一个）的窗口
+    C -x o 	移动光标到另一个窗口
+    C -x 4 C -f 打开的文件会在第二个窗口
+
+22. help
+    C -h ?	查看系统提供的所有帮助
+    C -h char	查看char 代表的帮助
+
+    C -h c C -p	查看[C -p]的功能
+    C -h k C -p 获取更多的功能信息
+    C -h f previous-line 查看函数的功能
+    C -h t      启动官方教程
+    C -h b      列出所有的有效键绑定
+    C -h w      查找一个命令被绑定到了哪些键上
+    C -h a      查找一个匹配一段描述的命令
+    c -h m      显示当前激活的所有模式的信息
+    
+23. 不打开图形界面
+    emacs -nw
+
+24. 去掉颜色主题
+    emacs -nw --color=no
+
+25. 作为守护进程，然后用客户端连接
+    emacs --daemon
+
+    用客户端连接emacs
+    emacsclient -t
+
+26. 

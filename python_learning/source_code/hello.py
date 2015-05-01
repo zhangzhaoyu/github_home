@@ -1,6 +1,9 @@
-#! /usr/bin/env python3
-def test() :
-    print("hello world!!")
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+def test():
+    print "hello world!!"
+    print "你们"
 
 a = [1,2]
 

@@ -1,0 +1,9 @@
+#infor about proxy
+ssh -qTfnN -D 10101 -p 10201 anicloud@sf-us.anicloud.org(104.236.154.41)
+- D : 指定本地端口
+- p : 指定登录端口
+
+vpn@anicloud.org:vpn123
+
+ssh -qTfnN -D 10101 -p 1022 anicloud@sgp.anicloud.org
+ssh -qTfnN -D 10101 -p 10201 anicloud@tk.anicloud.org (107.191.61.59)
