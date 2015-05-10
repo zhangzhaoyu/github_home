@@ -26,7 +26,128 @@
    
 10. 如果在语句或者表达式中的某个位置希望获得值，则赋值语句不能在这些位置使用。
 
-11. 每种类型都有相关联的构造函数。int(), float(), str()。
+11. 每种类型都有相关联的构造函数。int(), float(), str()。当有参数时，将该值转化为制定类型的新对象。
+
+12.	Python 提供了Decimal 小数和Fraction 分数。为精确计算提供了可能。
+    * Fraction + int -> Faction
+    * Fraction + float -> float
+    * Fraction + Fraction -> Fraction
+
+13. 集合(Set) :唯一的，不可变的对象的无序集合。
+    
+14. 认为空对象（整数0、浮点数0.0、空字符串''）是假，认为所有非空对象是真。
+
+15. Python 中的两种相等
+    * 两个不同的名字关联的对象，具有相同的值
+    * 两个不同的名字与同一个对象（即具有相同ID的对象）关联
+    * == 检查两个名称引用的对象是否具有相同的值
+    * is 检查两个名字是否引用同一个对象（具有相同的ID）
+
+16. 对于两个浮点数，执行的不是全等测试，而是测试两者是否相近(delta = 0.0 000001
+    if math.fabs(x - y) < delta
+
+17. 关系运算符链
+    aInt = 5
+    0 <= aInt <= 2
+
+18. 布尔运算符and or not。 and 的运算优先级大于or。
+
+19. 关系运算符优先级
+    ()                          圆括号
+    **                          求幂
+    +x, -x                      正的、负的
+    *,/,%                       乘 除 求余
+    +,-                         加 减
+    <,<=,>,>=,!=,==             比较
+    not x
+    and
+    or
+
+20. 多重赋值
+    aInt, bInt, cInt = 1, 2, 3
+    交换两个值
+    aInt, bInt = 2, 3
+    tempInt = aInt
+    aInt = bInt
+    bInt = tempInt
+
+    aInt,bInt = bInt, aInt
+
+21. while 循环的else 当表达式的值为假时执行，可以看做是循环正常结束时的清理动作。
+
+22. break 终结循环，continue 跳过while 循环剩余部分，回到while 循环的开始。
+
+23. 用pylab 对数据绘图
+
+24. 三重引号字符串将保留所有字符串的格式信息。
+
+25. ord() 显示字符对应的整数值，chr() 给出整数对应的字符。
+
+26. 字符串赋值得到的是副本，不是引用。
+
+27. in 运算符用于检查集合的成员。 'a' in "zhang。Fraction + int -> Faction
+    * Fraction + float -> float
+    * Fraction + Fraction -> Fraction
+
+13. 集合(Set) :唯一的，不可变的对象的无序集合。
+    
+14. 认为空对象（整数0、浮点数0.0、空字符串''）是假，认为所有非空对象是真。
+
+15. Python 中的两种相等
+    * 两个不同的名字关联的对象，具有相同的值
+    * 两个不同的名字与同一个对象（即具有相同ID的对象）关联
+    * == 检查两个名称引用的对象是否具有相同的值
+    * is 检查两个名字是否引用同一个对象（具有相同的ID）
+
+16. 对于两个浮点数，执行的不是全等测试，而是测试两者是否相近(delta = 0.0 000001
+    if math.fabs(x - y) < delta
+
+17. 关系运算符链
+    aInt = 5
+    0 <= aInt <= 2
+
+18. 布尔运算符and or not。 and 的运算优先级大于or。
+
+19. 关系运算符优先级
+    ()                          圆括号
+    **                          求幂
+    +x, -x                      正的、负的
+    *,/,%                       乘 除 求余
+    +,-                         加 减
+    <,<=,>,>=,!=,==             比较
+    not x
+    and
+    or
+
+20. 多重赋值
+    aInt, bInt, cInt = 1, 2, 3
+    交换两个值
+    aInt, bInt = 2, 3
+    tempInt = aInt
+    aInt = bInt
+    bInt = tempInt
+
+    aInt,bInt = bInt, aInt
+
+21. while 循环的else 当表达式的值为假时执行，可以看做是循环正常结束时的清理动作。
+
+22. break 终结循环，continue 跳过while 循环剩余部分，回到while 循环的开始。
+
+23. 用pylab 对数据绘图
+
+24. 三重引号字符串将保留所有字符串的格式信息。
+
+25. ord() 显示字符对应的整数值，chr() 给出整数对应的字符。
+
+26. 字符串赋值得到的是副本，不是引用。
+
+27. in 运算符用于检查集合的成员。 'a' in "zhang
+
+28. 字符串的格式化输， print "%s is %d years old" % ("zhangzhaoyu, 24)。
+
+29. 迭代器 enumerate。
+
+30. L.sort()   
 
 
 
