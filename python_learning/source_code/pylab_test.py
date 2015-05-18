@@ -1,19 +1,23 @@
 #! /usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # author zhangzhaoyu@anicloud.com
 # Date   2015-04-28
 
-import math
+import string
+import numpy as np
 import pylab
 
-y_values = []
-x_values = []
-num = 0.0
+__author__ = "zhangzhaoyu"
 
-while num < math.pi * 4:
-    y_values.append(math.sin(num))
-    x_values.append(num)
-    num += 0.1
+xVals = np.arange(0, 4 * np.pi, 0.1)
+y1Vals = np.sin(xVals)
+y2Vals = np.cos(xVals)
 
-pylab.plot(x_values, y_values, "ro")
+pylab.title("sine and cosin plot")
+pylab.plot(xVals, y1Vals, "b")
+pylab.plot(xVals, y2Vals, "r")
 pylab.show()
+
+if __name__ == "__main__":
+    pass
