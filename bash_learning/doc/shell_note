@@ -1,0 +1,28 @@
+1. 在bash 中每个命令或是命令序列是通过分号或者换行符来分隔的。
+
+2. echo 支持转义echo -e "1\t2\t3"
+
+3. 输出带颜色的文本 echo -e "\e[1;31m This is red text \e[0m"
+
+4. 查看进程相关环境变量
+   cat /proc/$PID/environ
+
+5. 获取进程ID pgrep gedit
+
+6. 常见的环境变量 HOME、PWD、UID、SHELL等。
+
+7. 获取字符串长度 ${#var}
+
+8. 查看当前使用的shell: echo $SHELL or echo $0。
+
+9. 访问Shell 脚本的位置参数 $1 ~ $9 大于9 的要用{}扩起来。
+
+10. [sh|bash] -x 打开跟踪执行功能。
+
+11. set -x 打开跟踪执行功能， set +x 关闭跟踪执行功能。
+
+12. locale 列出系统的locale 名称。
+
+13. 查找文本grep、egrp、fgrep，在2001 POSIX 标准里，就只纳入合并后的grep 命令。
+
+14. 

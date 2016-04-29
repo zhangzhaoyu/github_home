@@ -197,7 +197,88 @@
 45. 每个block 仅能容纳一个文件的数据而已，因此如果你的文件都非常小，但是你的block 在格式化时却选用最大的4k 时，可能会
    产生一些容量的浪费。
 
-46. 
+46. 如果想要开放某个目录让一些进来的话，请记得将该目录的x 属性给开放。
+
+47. Linux 主要目录的作用：
+    * /etc ：几乎系统所有配置文件均在此，尤其是passwd,shadow
+    * /etc/init.d : 系统开机的时候加载服务的scripts 的摆放地点
+    * /boot : 开机配置文件，也是Linux 核心vmlinuz 的地方
+    * /usr/bin，/bin : 一般执行档拜访的地方
+    * /usr/sbin,/sbin : 系统管理员常用指令集
+    * /dev : 所有系统装置档案的目录
+    * /var/log : 摆放系统注册表档案和日志的地方
+
+48. mkdir -p one/two/three 递归建立目录
+    mkdir -m 711 testdir 建立指定权限的目录
+
+49. cp -r 可以进行目录的copy
+    cp -s 做成连接档，与ln 指令相同功能
+    cp -u,--update 如果来源比较新，或者没有目的档，才进行copy
+
+50. rm -i 删除显示提示语
+    rm -r 循环删除
+    rm -f 强力删除
+
+51. mv -u --update 当来源比目的档还新时才会动作
+    还有重命名文件的功能
+
+52. basename 将档案或目录的最后一个截取出来
+
+53. dirname 与basename 相反
+
+54. 观看档案内容
+    cat 从第一行开始显示档案内容
+    tac 从最后一行开始显示，可以看出tac 是cat 倒着写
+    more 一页一页显示档案内容
+    less 跟more 类似，但是可以往前翻页
+    head 只看头几行
+    tail 只看尾几行
+
+55. chown [-R] user:group 循环地将该目录下的所有档案都改成user 与group 的名称
+
+56. 若使用者建立为档案，则预设没有x 权限，亦即只有rw 这两个项目：666[-rw-rw-rw-]
+    若用户建立为目录，则由于x 与是否可以进入此目录有关，因此默认为所有权限俊开放，亦即为：777[drwxrwxrwx]
+
+57. touch 创建文件
+
+58. lsattr 显示文件的隐藏属性
+
+59. 搜寻档案或目录
+    which 查看可执行文档的位置
+    whereis 查看档案的文职
+    locate 配合数据库查看档案位置
+    find 实际搜索硬盘
+
+60. file 查看档案类型
+
+61. 文件系统：
+    * 索引式文件系统（Ext2 所以不需要磁盘碎片整理）
+    * Fat 格式采用链式存储，会导致太分散，需要磁盘碎片整理
+
+62. df 查看目前挂在的设备
+    dumpe2fs -h /dev/sdb5
+
+63. 查看系统支持的内文件系统：ls -l /lib/modules/3.13.0-63-generic/kernel/fs
+    查看已经加载到内存中支持的文件系统：cat /proc/filesystems
+
+64. 0 - stdin 标准输入
+    1 - stdout 标准输出
+    2 - stderr 标准错误
+
+65.df du 命令
+
+66. hard link（实体链接、硬式连结）
+    symbolic link（符号链接 即快捷方式）
+    
+    
+
+
+
+
+
+
+
+
 
 
 

@@ -30,4 +30,10 @@
 14. volatile 关键字能够确保系统的可视性。只要对这个域产生了写操作，那么所有的读操作都姓看到这个修改。如果多个任务在同时访问
     某个域，那么这个域就应该是volatile。
 
-15. 
+15. CyclicBarrier 和CountDownLatch 都是用于多个线程间的协调的。
+
+16. Semaphore 是用于管理信号量的，构造的事后传入可供管理的信号量的数值。
+
+17. Exchanger 用于在两个线程间进行数据交换。
+
+18. Future 和FutureTask。
