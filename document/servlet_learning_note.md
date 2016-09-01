@@ -17,3 +17,12 @@
    * ServletContext.getResourcePaths() 可以获取指定目录下的资源文件列表。"/"表示应用程序根目录。
    * ServletContext.getResourceAsStream() 读取文件内容。
    * 使用相对路径读取文件时，是相对于启动Web 容器启动时的命令执行目录。例如writer.println(new File("hello.txt").getAbsolutePath()) 输出为/home/zhaoyu/Java/tomcat/apache-tomcat-8.0.28/bin/hello.txt。
+
+## 事件，监听器，过滤器
+   * HttpSessionBindingListener 可以实现将实现该接口的对象加入session 中时，触发该接口定义的方法。当session 失效时，会触发valueUnBound() 方法。
+   * Dispatcher 可以用来设置Filter 被触发的条件。默认的为REQUEST。在枚举类DispatcherType 中说明。
+
+## Servlet 异步处理
+   * Servlet 支持异步处理需要标注asyncSupported 属性。如果异步处理的Servlet 的前端有Filter，则Filter 也需要标注异步支持属性。
+   * 同一个AsyncContext 上不可同时调用complete() 和forward() 方法，否则会报错。也不可以在两个异步Servlet 之间派送。
+   * 如果对异步的过程进行监控，可以实现AsyncListener 接口。
