@@ -26,3 +26,11 @@
    * Servlet 支持异步处理需要标注asyncSupported 属性。如果异步处理的Servlet 的前端有Filter，则Filter 也需要标注异步支持属性。
    * 同一个AsyncContext 上不可同时调用complete() 和forward() 方法，否则会报错。也不可以在两个异步Servlet 之间派送。
    * 如果对异步的过程进行监控，可以实现AsyncListener 接口。
+
+## JSP
+   * include 与jsp:include，前者会先包含然后转译为一个Servlet，后者包含与被包含的JSP页面都会生成Servlet。
+   * 注意区分<%%>,<%!%>和<%=%>。第一个的内容会被转转译为类的内容，第二个会被转译为service() 方法中的内容。
+   * JSP 中的隐式对象包括out(JspWriter->PrintWriter),request,response,config(ServletConfig),application(ServletContext),session,pageContext, exception和page(this)。
+   * JSP 中的隐式对象只能在<%!%>和<%=%>中使用。
+   * pageContext 封装了页面的所有信息，可以使用pageContext 设置共享属性，并设置范围。pageContext.findAttribute() 将从page,request,session 和application 依次查找属性。
+   
