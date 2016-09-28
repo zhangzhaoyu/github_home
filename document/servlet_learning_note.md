@@ -29,8 +29,18 @@
 
 ## JSP
    * include 与jsp:include，前者会先包含然后转译为一个Servlet，后者包含与被包含的JSP页面都会生成Servlet。
-   * 注意区分<%%>,<%!%>和<%=%>。第一个的内容会被转转译为类的内容，第二个会被转译为service() 方法中的内容。
+   * 注意区分<%!%>,<%%>和<%=%>。第一个的内容会被转转译为类的内容，第二个会被转译为service() 方法中的内容。
    * JSP 中的隐式对象包括out(JspWriter->PrintWriter),request,response,config(ServletConfig),application(ServletContext),session,pageContext, exception和page(this)。
    * JSP 中的隐式对象只能在<%!%>和<%=%>中使用。
    * pageContext 封装了页面的所有信息，可以使用pageContext 设置共享属性，并设置范围。pageContext.findAttribute() 将从page,request,session 和application 依次查找属性。
+   * exception 对象是JSP 的隐式对象，只有isErrorPage 设置为true时，才可以使用。
+  
+## EL
+   * EL 提供了11 个隐式对象，其中除了pageContext 对象对应PageContext 之外，其他对象都是对应Map。
+   * 与属性范围相关的隐式对象有pageScope，requestScope，sessionScope 与applicationScope。如果不指定scope，默认先从pageScope 中查找属性。
+   * 与请求参数相关的隐式对象param 与paramValues。
+   * 与标头header 相关隐式对象header 与headerValues。
+   * 与cookie 相关的隐式对象cookie。
+   * 初始参数隐式对象initParam 可从web.xml 中获取参数。
+   
    
