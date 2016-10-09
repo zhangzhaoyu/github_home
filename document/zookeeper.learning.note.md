@@ -3,7 +3,8 @@
 ## Zookeeper install
    * config zoo.cfg
    * 配置环境变量，将bin 目录添加到PATH
-   * zkServer.sh start 启动
+   * zkServer.sh start 启动，默认在后台运行
+   * zkServer.sh start-foreground 在前台运行
    * zkServer.sh status 查看状态
    * zkServer.sh stop 停止
    * zkServer.sh restart 重启   
