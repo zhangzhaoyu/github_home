@@ -1,0 +1,45 @@
+# Linux 系统 init 概述
+
+## init 进程
+Linux 操作系统开机启动后，首先从BIOS 系统开始，接着进入到boot loader，由boot loader 载入内核，进行内核的初始化。内核初始化后，进行的最后一步就是启动pid 为1的init 进程。它负责产生所有其他的用户进程。
+<!-- more -->
+## init 系统
+init 系统能够定义、管理和控制init 进程的行为。它负责组织和运行许多独立的或相关的初始化工作，从而让计算机系统进入某种用户预定的运行模式。
+大多数Linux 发行版的init 系统是和System V相兼容的，被称为sysvinit。Ubuntu 和RHEL 采用的upstart 替换了传统的sysvinit系统。而Fedora 从版本15 开始使用systemd 的新init 系统。
+ 
+# Sysvinit 介绍
+Sysvinit 是System V风格的init 系统，源自于System V系列的UNIX。
+
+## 运行级别
+Sysvinit 用术语runlevel 来定义`预订的运行模式`。Sysvinit 会检查`/etc/inittab` 文件中是否存在`initdefault`项。如果存在则运行该默认的运行模式，反之进入系统控制台，手动进入某种运行模式。通常规定了8种运行i模式0到6、S和s。通常各大Linux 厂商对运行模式的定义都太一样，但是如下三种基本一致：
+
+- 0 关机
+- 1 单用户模式
+- 6 重启
+
+通常会在`/etc/inittab` 文件中定义各种运行模式的工作范围。而模式1和S通常用于系统故障之后的拍错和恢复。
+
+## Sysvinit 的运行顺序
+1. 读取`/etc/inittab`，获取以下配置信息：
+   - 系统runlevel
+   - 组合键定义
+   - 定义电源fail/restore 脚本
+   - 启动 getty 和虚拟控制台
+2. 获取配置信息后， Sysvinit 执行以下步骤，从而将系统初始化为预定的runlevel X：
+   - /etc/rc.d/rc.sysinit
+   - /etc/rc.d/rc 和/etc/rc.d/rcX.d/ (X 代表运行级别 0-6)
+   - /etc/rc.d/rc.local
+   - X Display Manager
+
+rc.local 是系统留给用户进行个性化设置的地方，可以将私人想设置和启动的东西配置在这里。rcX.d 目录下放了很多不同的脚本。文件名以S开头的就是启动时应该运行的脚本，S后面跟的数字定义了脚本的执行顺序。而rcX.d 里面的文件都是软链接，真正的脚本都放在`/etc/init.d` 中。
+
+## Sysvinit 和系统关闭
+Sysvinit 不仅需要负责初始化系统，还需要负责关闭系统。在系统关闭时，为了保证数据的一致性，需要小心地按顺序进行结束和清理工作。这种顺序的控制这也是依靠/etc/rc.d/rcX.d/目录下所有脚本的命名规则来控制的，在该目录下所有以 K 开头的脚本都将在关闭系统时调用，字母 K 之后的数字定义了它们的执行顺序。
+
+## Sysvinit 总结
+Sysinit 概念简单，用户只需要编写启动和停止脚本，然后将Service 添加到某个runlevel。完成这些功能只需要添加一些软链接，不需要学习额外的知识或语法来定义系统的初始化行为。而Upstart 和Systemd 都需要。
+
+然而，Sysvinit 是顺序的执行各种初始化文件，按照指定的序号的大小。执行顺序的确定性带来的是串行的低效率。而Upstart 和 Systemd 都支持串行的执行方式。在后续的文章中会对其进行介绍。 
+
+## 参考引入
+1. [浅析 Linux 初始化 init 系统，第 1 部分: sysvinit](http://www.ibm.com/developerworks/cn/linux/1407_liuming_init1/index.html)
